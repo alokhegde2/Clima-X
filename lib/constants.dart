@@ -12,5 +12,6 @@ const kSecondaryTextColor = Color(0xFF39475A);
 const kStatusColorWorking = Color(0xFFFFF30C);
 const kStatusColorError = Colors.red;
 const kStatusColorSuccess = Colors.green;
+const kShadowColor = Color(0xFF09397F);
 
 const kDefaultPadding = 20.0;
