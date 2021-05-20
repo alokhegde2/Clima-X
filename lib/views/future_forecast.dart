@@ -1,14 +1,14 @@
-import 'package:climax/constants.dart';
-import 'package:climax/views/future_forecast.dart';
 import 'package:climax/widgets/main_image.dart';
 import 'package:climax/widgets/secondary_details.dart';
-import 'package:climax/widgets/weather_card.dart';
+import 'package:climax/widgets/weather_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../constants.dart';
+
+class FutureForecast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: kDefaultPadding, vertical: 10.0),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.75,
+              height: MediaQuery.of(context).size.height * 0.45,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [kMainColor1, kMainColor2],
@@ -49,9 +49,11 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.back();
+                          },
                           icon: Icon(
-                            CupertinoIcons.square_grid_2x2_fill,
+                            CupertinoIcons.chevron_left_circle,
                             color: kIconColor,
                           ),
                         ),
@@ -73,32 +75,33 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
                     ),
-                    MainImage(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Container(
+                          height: 110.0,
+                          width: 110.0,
+                          child: MainImage(),
+                        ),
+                        Text(
+                          "21\u2070",
+                          style: GoogleFonts.ubuntu(
+                              fontSize: 60.0,
+                              color: kTextColor,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: 20.0,
-                    ),
-                    Text(
-                      "21\u2070",
-                      style: GoogleFonts.ubuntu(
-                          fontSize: 80.0,
-                          color: kTextColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      "Thunderstorm",
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 28.0,
-                        color: kTextColor,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.0,
                     ),
                     Divider(
                       color: kIconColor.withOpacity(0.15),
@@ -113,59 +116,14 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
+              height: MediaQuery.of(context).size.height*0.55,
+              width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(
-                  horizontal: kDefaultPadding + 20,
+                  horizontal: kDefaultPadding,
                   vertical: kDefaultPadding + 10),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Today",
-                        style: GoogleFonts.ubuntu(
-                            color: kTextColor, fontSize: 20.0),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.to(FutureForecast());
-                        },
-                        child: Row(
-                          children: [
-                            Text(
-                              "7 days",
-                              style: GoogleFonts.ubuntu(
-                                  color: kSecondaryTextColor, fontSize: 16.0),
-                            ),
-                            SizedBox(
-                              width: 3.0,
-                            ),
-                            Icon(
-                              CupertinoIcons.chevron_forward,
-                              color: kSecondaryIconColor,
-                              size: 16.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.20,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return Container(child: WeatherCard());
-                      },
-                    ),
-                  )
-                ],
-              ),
+                  child: ListView.builder(itemCount:10,itemBuilder: (context,index){
+                    return WeatherTile();
+                  },),
             ),
           ],
         ),
