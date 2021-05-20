@@ -1,4 +1,6 @@
 import 'package:climax/constants.dart';
+import 'package:climax/widgets/main_image.dart';
+import 'package:climax/widgets/secondary_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,8 +29,8 @@ class HomeScreen extends StatelessWidget {
             BoxShadow(
               color: kShadowColor,
               offset: const Offset(
-                1.0,
-                10.0,
+                0.0,
+                5.0,
               ),
               spreadRadius: 2.0,
             ),
@@ -48,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Minsk",
+                    "Minsk", //Current location or city Name should comr here
                     style: GoogleFonts.ubuntu(
                       color: kTextColor,
                       fontSize: 22.0,
@@ -64,6 +66,42 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 30.0,
+              ),
+              MainImage(),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                "21\u2070",
+                style: GoogleFonts.ubuntu(
+                    fontSize: 80.0,
+                    color: kTextColor,
+                    fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                "Thunderstorm",
+                style: GoogleFonts.ubuntu(
+                  fontSize: 28.0,
+                  color: kTextColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Divider(
+                color: kIconColor.withOpacity(0.15),
+                thickness: 2,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              SecondaryDetails(),
             ],
           ),
         ),
