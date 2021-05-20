@@ -9,6 +9,7 @@ const kPrimaryColor = Color(0xFF000918);
 const kTextColor = Color(0xFFFDFBFD);
 const kIconColor = Color(0xFFFDFBFD);
 const kSecondaryTextColor = Color(0xFF39475A);
+const kSecondaryIconColor = Color(0xFF39475A);
 const kStatusColorWorking = Color(0xFFFFF30C);
 const kStatusColorError = Colors.red;
 const kStatusColorSuccess = Colors.green;
