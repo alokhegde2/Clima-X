@@ -9,6 +9,7 @@ class LocationController extends GetxController {
   var latitude1 = ''.obs;
   var longitude1 = ''.obs;
   var isLocationEnabled = false.obs;
+  var isValueAvailable = false.obs;
   LocationPermission permission;
 
   @override
@@ -69,6 +70,13 @@ class LocationController extends GetxController {
         backgroundColor: kPrimaryColor,
         radius: 10.0,
       );
+      // try {
+      //   Position position = await Geolocator.getLastKnownPosition();
+      //   latitude1(position.latitude.toString());
+      //   longitude1(position.longitude.toString());
+      // } catch (e) {
+      //   print(e);
+      // }
       return;
     }
     try {
@@ -77,10 +85,11 @@ class LocationController extends GetxController {
 
       latitude1(position.latitude.toString());
       longitude1(position.longitude.toString());
+      isValueAvailable(true);
       // longitude = position.longitude;
-      print("HEllo");
+      // print("HEllo");
       isLocationEnabled(true);
-      print(latitude1);
+      // print(latitude1);
     } catch (e) {
       print(e);
     }
