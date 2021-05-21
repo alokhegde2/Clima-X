@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     final locationController = Get.put(LocationController());
@@ -61,16 +62,18 @@ class HomeScreen extends StatelessWidget {
                         ),
                         SizedBox(
                           width: 50.0,
-                          child: Obx(() => Text(
-                                locationController.latitude1.toString(),
-                                overflow: TextOverflow
-                                    .ellipsis, //Current location or city Name should comr here
-                                style: GoogleFonts.ubuntu(
-                                  color: kTextColor,
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              )),
+                          child: Obx(
+                            () => Text(
+                              locationController.latitude1.toString(),
+                              overflow: TextOverflow
+                                  .ellipsis, //Current location or city Name should comr here
+                              style: GoogleFonts.ubuntu(
+                                color: kTextColor,
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ),
                         IconButton(
                           onPressed: () {},
