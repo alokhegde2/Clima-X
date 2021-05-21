@@ -1,4 +1,5 @@
 import 'package:climax/constants.dart';
+import 'package:climax/controllers/location_controller.dart';
 import 'package:climax/views/future_forecast.dart';
 import 'package:climax/widgets/main_image.dart';
 import 'package:climax/widgets/secondary_details.dart';
@@ -11,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final locationController = Get.put(LocationController());
     return Scaffold(
       backgroundColor: kPrimaryColor,
       body: SingleChildScrollView(
@@ -49,19 +51,26 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            locationController.onInit();
+                          },
                           icon: Icon(
                             CupertinoIcons.square_grid_2x2_fill,
                             color: kIconColor,
                           ),
                         ),
-                        Text(
-                          "Minsk", //Current location or city Name should comr here
-                          style: GoogleFonts.ubuntu(
-                            color: kTextColor,
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        SizedBox(
+                          width: 50.0,
+                          child: Obx(() => Text(
+                                locationController.latitude1.toString(),
+                                overflow: TextOverflow
+                                    .ellipsis, //Current location or city Name should comr here
+                                style: GoogleFonts.ubuntu(
+                                  color: kTextColor,
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )),
                         ),
                         IconButton(
                           onPressed: () {},
