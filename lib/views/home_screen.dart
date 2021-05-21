@@ -1,5 +1,6 @@
 import 'package:climax/constants.dart';
 import 'package:climax/controllers/location_controller.dart';
+import 'package:climax/views/city_management.dart';
 import 'package:climax/views/future_forecast.dart';
 import 'package:climax/widgets/main_image.dart';
 import 'package:climax/widgets/secondary_details.dart';
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: kPrimaryColor,
           body: (locationController.isValueAvailable.value)
               ? RefreshIndicator(
+                backgroundColor: kPrimaryColor,
                   onRefresh: () {
                     return locationController.getCurrentLocation();
                   },
@@ -80,7 +82,9 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Get.to(CityManagement());
+                                      },
                                       icon: Icon(
                                         CupertinoIcons.building_2_fill,
                                         color: kIconColor,
